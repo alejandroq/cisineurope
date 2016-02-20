@@ -1,0 +1,81 @@
+@media screen and (max-width: 629px) {
+
+/* Hidden */
+nav, .study, .abroad, #langSelect, .noMobile { display:none; }
+
+/* Typography (For Nav Btn Centering) */
+h3 { line-height: 0em;} 
+
+/* HTML5 Semantics */
+header {
+		width:100%;
+		height:70px;
+		padding-top:5px;
+	}
+form {
+	height:575px; /* An impartial solution to fixing Mobile Form Section* -AQ */
+}
+
+/* Navigation */
+.mobileTxtHeader {
+	float:right;
+	line-height:20px;
+	width:7.3em; /* Some voodoo to just-fit iPhone 5 and below screens without the mobile header getting distorted. -AQ*/
+}
+#stackMenu {
+	float:left;
+	height:30px;
+	width:30px;
+	background-image:url("../images/menu.png");
+	margin: 20px 15px;
+	background-size:40px 40px;
+	background-size:cover;
+}
+#stackMenu:hover {
+cursor:pointer;
+}
+nav {
+	height:310px;
+	width:100%;
+	margin:0 auto 0 auto;
+	z-index: 1;
+	background-color:white;
+	position:absolute;
+	top:75px;
+	left:0px;
+	border-bottom:black;
+	border-bottom-style:solid;
+	border-width:5px;
+	z-index:3;
+}
+.navBtn {
+	color:gray;
+	height:50px;
+	width:100%;
+	line-height:10px;
+	border-bottom-style:solid;
+	border-width:1px;
+	padding-top:10px;
+	z-index:1;
+	text-decoration:underline;
+}
+.navBtn:hover{
+	cursor:pointer;
+}
+.navEnglish, .navSpanish {
+	text-decoration:none;
+	border-bottom-style:none;
+	color:gray;
+}
+/*************************************************************************************************************/
+/* Carousel: Source:     http://g-liu.com/blog/2013/08/tutorial-basic-carouselslideshow-with-javascript/     */
+/*************************************************************************************************************/
+
+.slide-size {
+  max-height: 450px;
+  width:100%;
+}
+li {
+  max-height: 450px;
+}
+}

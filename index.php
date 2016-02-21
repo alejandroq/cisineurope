@@ -1,5 +1,3 @@
-<!DOCTYPE HTML>
-
 <!-- 
 
 CIS in Europe MVP 
@@ -8,51 +6,20 @@ CIS in Europe MVP
 Designer / Developer: Alejandro Quesada
 
 -->
-<html class="no-js" lang="">
-    <head>
 
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>CIS in Europe</title>
-        <meta name="description" content="Why you should consider studying abroad with 'CIS in Europe'!">
-        <meta name="author" content="Alejandro Quesada">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php 
+/*  require 'connection.php' calls and inserts the php code to connect your webpage 
+    to your WIMP stack. */
+require 'connection.php';
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+/*  require 'logic.php', like connection.php, inserts the php code comprising here. 
+    Cleaner than muddling all the code in this one file. */
+require 'functions.php';
 
-        <!-- HTML5 Boilerplate v5.2 CSS -->
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-
-        <!-- My CSS -->
-        <link rel="stylesheet" type="text/css" href="css/mystyle.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="css/desktop.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen">
-
-        <!-- HTML5 Boilerplate v5.2 JS -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
-    </head>
-    <body>
-        
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <?php 
-        /*  require 'connection.php' calls and inserts the php code to connect your webpage 
-            to your WIMP stack. */
-        require 'connection.php';
-
-        /*  require 'logic.php', like connection.php, inserts the php code comprising here. 
-            Cleaner than muddling all the code in this one file. */
-        require 'functions.php';
-
-        /*  require 'nav.php' calls and inserts the HTML from the file 'nav.php' within the 
-            CISinEurope Directory here. This technique is useful for maintaining consistent 
-            navigation interfaces. */
-        require 'header.php';
+/*  require 'nav.php' calls and inserts the HTML from the file 'nav.php' within the 
+    CISinEurope Directory here. This technique is useful for maintaining consistent 
+    navigation interfaces. */
+require 'header.php';
 
 echo <<< HERE
         <section class="abroad contrast">  
@@ -151,11 +118,10 @@ echo <<< HERE
         </footer>
 HERE;
 ?>
-        <!-- WARNING: Do not edit past this line -->
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
 
-        <!-- JS Callouts located here as to not disrupt above contents when failure is about -->
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 

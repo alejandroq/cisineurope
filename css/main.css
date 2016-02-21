@@ -37,7 +37,7 @@ html{color:#222;font-size:1em;line-height:1.4}::-moz-selection{background:#b3d4f
    ========================================================================== */
 
 body {
-  font-size: 110%;
+  font-size:medium;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   background-color: white;
@@ -321,8 +321,7 @@ pre > code {
     /* HTML5 Semantics */
     header {
         width:100%;
-        height:70px;
-        padding-top:5px;
+        min-height:3.5em
       }
     form {
       height:575px; /* An impartial solution to fixing Mobile Form Section* -AQ */
@@ -336,8 +335,8 @@ pre > code {
     }
     #stackMenu {
       float:left;
-      height:30px;
-      width:30px;
+      height:20px;
+      width:20px;
       background-image:url("../images/menu.png");
       margin: 20px 15px;
       background-size:40px 40px;
@@ -353,7 +352,7 @@ pre > code {
       z-index: 1;
       background-color:white;
       position:absolute;
-      top:75px;
+      top:55px;
       left:0px;
       border-bottom:black;
       border-bottom-style:solid;
@@ -423,7 +422,6 @@ pre > code {
     .navBtn, #langSelect {
       background-color:white;
       color:gray;
-      height:50px;
       width:25%;
       max-width:175px;
       border-radius:5px;

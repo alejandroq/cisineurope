@@ -346,7 +346,6 @@ pre > code {
     cursor:pointer;
     }
     nav {
-      height:310px;
       width:100%;
       margin:0 auto 0 auto;
       z-index: 1;
@@ -413,8 +412,9 @@ pre > code {
     /* Navigation */
     nav {
       display:block;
-      height:100px;
+      overflow:hidden;
       width:90%;
+      padding:.2em 0 .6em 0;
       margin:0 auto 0 auto;
       z-index: 1;
     }
@@ -422,8 +422,7 @@ pre > code {
     .navBtn, #langSelect {
       background-color:white;
       color:gray;
-      width:25%;
-      max-width:175px;
+      width:7em;
       border-radius:5px;
       margin: 7.5px 3px 0 0;
       float:left;
@@ -508,3 +507,4 @@ pre > code {
       display: table;
       clear: both; }
   }
+

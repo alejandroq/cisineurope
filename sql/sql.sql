@@ -6,13 +6,9 @@ CIS in Europe MVP
 Designer / Developer: Alejandro Quesada
 
 Instructions: 
-	1) Create Database called DB in MySQL. 
-	2) Create new user for DB with the following credentials:
-		user = user 
-		pwd = colecarey
-	3) Run lines 20-84 below in a query. 
+	1) Create Database called DB in MySQL.
+	3) Run lines 15-92 below in a query. 
 	4) SQL portion complete. 
-
 */
 
 CREATE TABLE linguaFranca(

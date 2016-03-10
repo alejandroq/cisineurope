@@ -105,23 +105,32 @@ echo <<< HERE
             </section>
         </article>
         <section class="study">
-            <div id="con">
+            <aside>
+            <div>
                 <h2>$text[25]</h2>
                 <h4>$text[26]</h4>
                 <p>$text[27]</p>
             </div>
+            </aside>
+                    <aside id="categories">
+                <div>
+                    <h4>Categories</h4>
+                    <ul>
+                        <li>General</li>
+                        <li>Content</li>
+                        <li>Design</li>
+                        <li>Development<li>
+                    </ul>
+                </div>
+            </aside>
         </section>
-        <footer>
-            <p class="credits">By Alejandro Quesada<br>
-            <a class="credits link" href="http://www.alejandroquesada.com" target="_blank" tabindex="-1">
-            www.alejandroquesada.com</a></p>
-        </footer>
 HERE;
-?>
-
+require 'footer.php'; ?>
+        <!-- WARNING: Do not edit past this line -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
 
+        <!-- JS Callouts located here as to not disrupt above contents when failure is about -->
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 

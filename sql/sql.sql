@@ -12,19 +12,19 @@ Instructions:
 */
 
 CREATE TABLE linguaFranca(
-	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+	ID int NOT NULL PRIMARY KEY Auto_Increment,
 	english VARCHAR(140) NULL,
 	spanish VARCHAR(140) NULL
 	);
 
 CREATE TABLE location(
-	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+	ID int NOT NULL PRIMARY KEY Auto_Increment,
 	city VARCHAR(20) NULL,
 	country VARCHAR(25) NULL
 	);
 
 CREATE TABLE reviews(
-	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+	ID int NOT NULL PRIMARY KEY Auto_Increment,
 	locationID int NOT NULL,
 	price int NOT NULL,
 	rating int NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE reviews(
 	);
 
 CREATE TABLE img(
-	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
+	ID int NOT NULL PRIMARY KEY Auto_Increment,
 	imgPath VARCHAR(2) NOT NULL
 	);
 

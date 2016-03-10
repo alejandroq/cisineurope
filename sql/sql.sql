@@ -6,7 +6,7 @@ CIS in Europe MVP
 Designer / Developer: Alejandro Quesada
 
 Instructions: 
-	1) Create Database called DB in MySQL.
+	1) Create Database called DB in SQL Server.
 	3) Run lines 15-92 below in a query. 
 	4) SQL portion complete. 
 */

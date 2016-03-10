@@ -44,6 +44,14 @@ body {
   }
 header {
   border-radius: 2px;
+  overflow:hidden;
+}
+h1 {
+  width:inherit;
+  line-height:0em;
+  font-size:1.5em;
+  padding:0em 1em;
+  text-align:center;
 }
 h2 {
   padding-top: 0;
@@ -77,6 +85,18 @@ a {
   margin-left:10px;
   margin-top:15px;
   text-decoration: none;
+}
+#logo {
+  float:left;
+  overflow:hidden
+  width:8em;
+  padding:1em 1em 1em .5em;
+}
+#logo p {
+  width:100%;
+  float:left;
+  line-height:0em;
+  text-align:center;
 }
 
 
@@ -216,6 +236,25 @@ section {
   z-index: 2;
 }
 
+.study aside {
+  float:left;
+  width:75%;
+}
+.study #categories {
+  width:20%;
+  min-width:9em;
+}
+.study aside div {
+  padding:1.5em;
+}
+.study {
+  width:100%;
+  max-width:80em;
+  margin:0em auto 0em auto;
+  overflow:hidden;
+}
+
+
 
 /* ==========================================================================
    4.0 - Carousel: Source: http://g-liu.com/blog/2013/08/tutorial-basic-carouselslideshow-with-javascript/;
@@ -313,7 +352,7 @@ pre > code {
    @media screen and (max-width: 629px) {
 
     /* Hidden */
-    nav, .study, .abroad, #langSelect, .noMobile { display:none; }
+    nav, .study, .abroad, #langSelect, .study #categories { display:none; }
 
     /* Typography (For Nav Btn Centering) */
     h3 { line-height: 0em;} 
@@ -328,17 +367,12 @@ pre > code {
     }
 
     /* Navigation */
-    .mobileTxtHeader {
-      float:right;
-      line-height:20px;
-      width:7.3em; /* Some voodoo to just-fit iPhone 5 and below screens without the mobile header getting distorted. -AQ*/
-    }
     #stackMenu {
       float:left;
       height:20px;
       width:20px;
       background-image:url("../images/menu.png");
-      margin: 20px 15px;
+      margin: 2.2em 1em;
       background-size:40px 40px;
       background-size:cover;
     }
@@ -347,37 +381,33 @@ pre > code {
     }
     nav {
       width:100%;
-      margin:0 auto 0 auto;
-      z-index: 1;
       background-color:white;
       position:absolute;
-      top:55px;
+      top:93px;
       left:0px;
-      border-bottom:black;
-      border-bottom-style:solid;
-      border-width:5px;
-      z-index:3;
+      text-align:left;
+      text-indent:4em;
+      padding-bottom:2em;
     }
     .navBtn {
       color:gray;
-      height:50px;
-      width:100%;
-      line-height:10px;
-      border-bottom-style:solid;
-      border-width:1px;
-      padding-top:10px;
-      z-index:1;
-      text-decoration:underline;
+      padding:.1em;
     }
     .navBtn:hover{
       cursor:pointer;
     }
-    .navEnglish, .navSpanish {
-      text-decoration:none;
-      border-bottom-style:none;
-      color:gray;
-    }
 
+    .onMobile p {
+      color:lightgray;
+      font-size:1.5em;
+      border-bottom-style:solid;
+      border-width:.1em;
+      border-color:lightgray;
+      margin:1em 0em 0em 0em;
+    }
+    .study aside {
+      width: 100%;
+    }
     /*************************************************************************************************************/
     /* Carousel: Source:     http://g-liu.com/blog/2013/08/tutorial-basic-carouselslideshow-with-javascript/     */
     /*************************************************************************************************************/
@@ -398,7 +428,7 @@ pre > code {
    @media screen and (min-width: 630px) {
 
     /* Hidden */
-    .navSpanish, .navEnglish, #stackMenu, .mobileTxtHeader, .study, .abroad, #img {
+    .navSpanish, .navEnglish, #stackMenu, .study, .abroad, #img, .onMobile {
       display:none;
     }
 
@@ -411,10 +441,9 @@ pre > code {
       
     /* Navigation */
     nav {
-      display:block;
+      display:block !important;
       overflow:hidden;
-      width:90%;
-      padding:.2em 0 .6em 0;
+      padding:.2em 0 0em 0;
       margin:0 auto 0 auto;
       z-index: 1;
     }
@@ -422,11 +451,11 @@ pre > code {
     .navBtn, #langSelect {
       background-color:white;
       color:gray;
-      width:7em;
+      width:5em;
       border-radius:5px;
       margin: 7.5px 3px 0 0;
+      padding:0;
       float:left;
-      text-decoration:underline;
     }
 
     .navBtn:hover{
@@ -435,8 +464,13 @@ pre > code {
 
     /* Header Options */
     #langSelect {
+      padding-right:2em;
+      padding-left:1em;
+      padding-bottom:1.1em;
+      padding:0em 1em 1.1em 1em;
       float: right;
-      width: 25%;
+      width: 6em;
+      margin-top:0em;
     }
 
     /* For devices larger than 550px */
@@ -507,4 +541,86 @@ pre > code {
       display: table;
       clear: both; }
   }
+
+/* ==========================================================================
+   9.0 - Footer Elements
+   ========================================================================== */
+
+footer {
+    width: 100%;
+    color: white;
+    word-wrap:break-word;
+    overflow: hidden;
+    background-color: #323232;
+    -webkit-transition: all 0.1s ease-in-out 0s;
+    -moz-transition: all 0.1s ease-in-out 0s;
+    -ms-transition: all 0.1s ease-in-out 0s;
+    -o-transition: all 0.1s ease-in-out 0s;
+    transition: all 0.1s ease-in-out 0s;
+}
+footer section {
+    width: 95%;
+    padding: 1em 0em 1em 0em;
+    border-style: none;
+    margin: 1em auto 1em auto;
+    background-color: #323232;
+    overflow:hidden;
+}
+footer section aside {
+  float:left;
+  width:33.33%;
+}
+footer h4 {
+    font-weight: normal;
+    border-bottom-style: solid;
+    border-bottom-width: .1em;
+}
+
+footer p {
+    line-height: 1em;
+    text-indent:1em;
+}
+ul {
+   list-style-type: none;
+   padding:0em;
+}
+footer ul {
+    padding: 0em 1em 0em 1em;
+}
+li {
+  text-align:left;  
+}
+footer div {
+    width: 100%;
+    max-width: 15em;
+    text-align: center;
+    margin:0em auto 2em auto;
+}
+footer a, footer p {
+    color: white;
+    text-decoration: none;
+    -webkit-transition: all 0.1s ease-in-out 0s;
+    -moz-transition: all 0.1s ease-in-out 0s;
+    -ms-transition: all 0.1s ease-in-out 0s;
+    -o-transition: all 0.1s ease-in-out 0s;
+    transition: all 0.1s ease-in-out 0s;
+}
+footer a:hover, footer p:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    background: rgb(198, 207, 170); /* Fall-back for browsers that don't support rgba */
+    background: rgba(89, 154, 252, 0.75);
+}
+@media screen and (max-width: 700px) {
+  h4 {
+    text-align:left;
+  }
+  footer section aside {
+    width:100%;
+  }
+}
+.study h4, div h4 {
+  text-align:center;
+}
 

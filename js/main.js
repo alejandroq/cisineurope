@@ -16,8 +16,8 @@ $(function() {
     var x=0;
     
     if (x==0) {
-        $('.navAbout').css({color:'black'});
-        $('.navEnglish').css({color:'black'});
+        $('.navAbout').css({color:'#323232'});
+        $('.navEnglish').css({color:'#323232'});
         x=1;  
         }
 
@@ -31,13 +31,13 @@ $(function() {
 
     if ( language == 'CIS in Europe') {
 
-        $('.navEnglish').css({color:'black'}); 
+        $('.navEnglish').css({color:'#323232'}); 
         $('.navSpanish').css({color:'gray'}); 
 
     } else {
 
         $('.navEnglish').css({color:'gray'}); 
-        $('.navSpanish').css({color:'black'}); 
+        $('.navSpanish').css({color:'#323232'}); 
 
     }
 
@@ -81,10 +81,10 @@ $(function() {
         $('.study').hide(200);
         $('#stackMenu').css('background-image','url(images/menu.png)');
         $('header').css({backgroundColor:'white'});
-        $('.navAbout').css({color:'black'});
+        $('.navAbout').css({color:'#323232'});
         $('.navStudy').css({color:'gray'});
         $('.navAbroad').css({color:'gray'});
-        $('.mobileTxtHeader').css({color:'black'});
+        $('#logo').css({color:'black'});
         if ($(window).width() < 630) { $('nav').hide(200);} 
       });
       $('.navStudy').on('click', function() {
@@ -92,11 +92,11 @@ $(function() {
         $('.about').hide(200);
         $('.study').show(200);
         $('#stackMenu').css('background-image','url(images/menuContrast.png)');
-        $('header').css({backgroundColor:'black'});
-        $('.navStudy').css({color:'black'});
+        $('header').css({backgroundColor:'#323232'});
+        $('.navStudy').css({color:'#323232'});
         $('.navAbout').css({color:'gray'});
         $('.navAbroad').css({color:'gray'});
-        $('.mobileTxtHeader').css({color:'white'});
+        $('#logo').css({color:'white'});
         if ($(window).width() < 630) { $('nav').hide(200);}  
       });
       $('.navAbroad').on('click', function() {
@@ -106,16 +106,16 @@ $(function() {
         $('.study').hide(200);
         $('#stackMenu').css('background-image','url(images/menu.png)');
         $('header').css({backgroundColor:'white'});
-        $('.navAbroad').css({color:'black'});
+        $('.navAbroad').css({color:'#323232'});
         $('.navAbout').css({color:'gray'});
         $('.navStudy').css({color:'gray'});
-        $('.mobileTxtHeader').css({color:'black'});
+        $('#logo').css({color:'black'});
         if ($(window).width() < 630) { $('nav').hide(200);} 
       });
       $('.about').on('click', function() {
         $('.about').css({opacity:'1'});
         $('.abroad').hide(200);
-        $('.navAbout').css({color:'black'});
+        $('.navAbout').css({color:'#323232'});
         $('.navStudy').css({color:'gray'});
         $('.navAbroad').css({color:'gray'});
         });
@@ -182,3 +182,4 @@ $(function() {
           $('.help').css({color:'#575353'});
           } 
       });
+     

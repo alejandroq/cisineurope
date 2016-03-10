@@ -238,11 +238,18 @@ section {
 
 .study aside {
   float:left;
-  width:75%;
+  margin-left:1em;
+  width:70%;
 }
-.study #categories {
+#categories {
+  right:1em;
   width:20%;
+  color:white;
   min-width:9em;
+  position:fixed;
+  border-radius:.3em;
+  padding:1em 1em 1em 1em;
+  background-color:#323232;
 }
 .study aside div {
   padding:1.5em;
@@ -549,8 +556,8 @@ pre > code {
 footer {
     width: 100%;
     color: white;
-    word-wrap:break-word;
     overflow: hidden;
+    word-wrap:break-word;
     background-color: #323232;
     -webkit-transition: all 0.1s ease-in-out 0s;
     -moz-transition: all 0.1s ease-in-out 0s;
@@ -620,7 +627,16 @@ footer a:hover, footer p:hover {
     width:100%;
   }
 }
-.study h4, div h4 {
-  text-align:center;
+#categories h4  {
+  margin-top:0em;
+  font-size:large;
+  text-align:left;
+}
+#categories li {
+  color:gray;
+}
+#categories li:hover {
+  color:white;
+  cursor:pointer;
 }
 

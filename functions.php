@@ -3,7 +3,6 @@
 /* 
 
 CIS in Europe MVP 
-11/20/15 logic.php Deliverable
 
 Designer / Developer: Alejandro Quesada
 

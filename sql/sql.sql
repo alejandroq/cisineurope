@@ -1,16 +1,16 @@
 /* 
 
 CIS in Europe MVP 
-11/20/15 SQL Deliverable
 
 Designer / Developer: Alejandro Quesada
 
 Instructions: 
 	1) Create Database called DB in MySQL. 
 	2) Create new user for DB with the following credentials:
-		user = user 
-		pwd = colecarey
-	3) Run lines 20-84 below in a query. 
+		user = dbuser 
+		pwd = careycole
+	3) Execute queries below
+	4) Execute PROCEDURE in procedure.sql doc
 	4) SQL portion complete. 
 
 */
@@ -20,12 +20,6 @@ CREATE TABLE linguaFranca(
 	english VARCHAR(140) NULL,
 	spanish VARCHAR(140) NULL
 	);
-
--- CREATE TABLE location(
--- 	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
--- 	city VARCHAR(20) NULL,
--- 	country VARCHAR(25) NULL
--- 	);
 
 CREATE TABLE country(
 	abbreviation CHAR(2) NOT NULL PRIMARY KEY,
@@ -63,16 +57,16 @@ CREATE TABLE category(
 CREATE TABLE wikiEntry(
 	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
 	title VARCHAR(25) NULL,
-	content VARCHAR(500) NULL,
-	link VARCHAR(150) NULL
+	content TEXT NULL,
+	link VARCHAR(150) NULL,
+	categoryID int NOT NULL,
+	Constraint c_fk foreign key (categoryID) References category (ID)
 );
 
-CREATE TABLE categoryAndWikiEntry(
-	categoryID int NOT NULL,
-	wikiEntryID int NOT NULL,
-	Constraint category_FK foreign key (categoryID) References category (ID),
-	Constraint wikiEntry_FK foreign key (wikiEntryID) References wikiEntry (ID)
-);
+
+--CONTENT
+INSERT INTO category (name) VALUES 
+	('General'), ('Content'), ('Design'), ('Development'); 
 
 INSERT INTO linguaFranca (english, spanish) VALUES
 	('CIS in Europe', 'CIS en Europa'),
@@ -359,21 +353,11 @@ INSERT INTO country VALUES ('ZR', 'Zaire');
 INSERT INTO country VALUES ('ZM', 'Zambia');
 INSERT INTO country VALUES ('ZW', 'Zimbabwe');
 
---http://stackoverflow.com/questions/16844657/sublime-text-select-all-instances-of-a-variable-and-edit-variable-name
+--INITIAL CONTENT
+INSERT INTO city (name, countryAbbreviation) VALUES ('Stockholm', 'SE');
 
---for purposes of instilling CIS in Europe w/ initial content
-INSERT INTO location (city, country) VALUES 
-('Stockholm', 'Sweden'),
-('Malm&ouml;', 'Sweden'),
-('Barcelona', 'Spain');
-
-
-INSERT INTO reviews (locationID, price, rating, note) VALUES
-(1,	3,	3,	'Stockholm, Sweden is full of enough brilliant architecture and pretty people to supplement "purposeful lostfullness" for 5+ hours.'),
-(2,	2,	3,	'MalmÃ¶, Sweden was an incredible place. Never there be a place it more appropriate for the operations of a bicycle sans a seat.'),
-(3,	1,	3,	'The nightlife was visceral. The people truly indulge in more libre lives outlined with Sangria, Familia, Futbol & Funny Lisps.');
-
+INSERT INTO reviews (countryAbbreviation, cityName, price, rating, note) VALUES
+('SE', 1, 3, 3,	'Stockholm, Sweden is full of enough brilliant architecture and pretty people to supplement "purposeful lostfullness" for 5+ hours.');
 
 INSERT INTO img (imgPath) VALUES 
 ('i1'), ('i2'), ('i3'), ('i4'), ('i5'), ('i6');
-

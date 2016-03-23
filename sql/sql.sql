@@ -33,6 +33,7 @@ CREATE TABLE reviews(
 	price int NOT NULL,
 	rating int NOT NULL,
 	note VARCHAR(140) NOT NULL,
+	post_date TIMESTAMP NOT NULL,
 	Constraint review_lccountry_FK foreign key (countryAbbreviation) References country (abbreviation)
 	);
 
@@ -352,5 +353,12 @@ INSERT INTO reviews (countryAbbreviation, cityName, price, rating, note) VALUES
 
 INSERT INTO img (imgPath) VALUES 
 ('i1'), ('i2'), ('i3'), ('i4'), ('i5'), ('i6');
+
+--WIKI
+INSERT INTO wikiEntry (title, content, categoryID) VALUES
+('Test', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code><?php echo "hello world!"; ?></code>', 1);
+('Test', '<p>This section will emphasize the value of content for a website and to initiliaze it as a role.</p><img src="" alt="temporary picture">', 2);
+('Test', '<p>This section will walk through a quick Design process students can take (finding 5th elements, wireframes, etc)</p>', 3);
+('Test', '<p>This section will have Database, PHP, HTML, JS and CSS advice.</p>', 4);
 
 

@@ -26,21 +26,13 @@ CREATE TABLE country(
 	name VARCHAR(30)
 );
 
-CREATE TABLE city(
-	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
-	name VARCHAR(25) NOT NULL,
-	countryAbbreviation CHAR(2) NOT NULL,
-	Constraint Country_FK foreign key (countryAbbreviation) References country (abbreviation)
-);
-
 CREATE TABLE reviews(
 	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
 	countryAbbreviation CHAR(2) NOT NULL,
-	cityID int NOT NULL,--search for city. If not existing with country then create new and link
+	cityName VARCHAR(25) NULL,
 	price int NOT NULL,
 	rating int NOT NULL,
 	note VARCHAR(140) NOT NULL,
-	Constraint review_city_FK foreign key (cityID) References city (ID),
 	Constraint review_lccountry_FK foreign key (countryAbbreviation) References country (abbreviation)
 	);
 

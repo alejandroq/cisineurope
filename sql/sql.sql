@@ -58,7 +58,6 @@ CREATE TABLE wikiEntry(
 	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
 	title VARCHAR(25) NULL,
 	content TEXT NULL,
-	link VARCHAR(150) NULL,
 	categoryID int NOT NULL,
 	Constraint c_fk foreign key (categoryID) References category (ID)
 );
@@ -361,3 +360,5 @@ INSERT INTO reviews (countryAbbreviation, cityName, price, rating, note) VALUES
 
 INSERT INTO img (imgPath) VALUES 
 ('i1'), ('i2'), ('i3'), ('i4'), ('i5'), ('i6');
+
+

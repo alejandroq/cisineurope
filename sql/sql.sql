@@ -356,9 +356,12 @@ INSERT INTO img (imgPath) VALUES
 
 --WIKI
 INSERT INTO wikiEntry (title, content, categoryID) VALUES
-('Test', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code><?php echo "hello world!"; ?></code>', 1);
-('Test', '<p>This section will emphasize the value of content for a website and to initiliaze it as a role.</p><img src="" alt="temporary picture">', 2);
-('Test', '<p>This section will walk through a quick Design process students can take (finding 5th elements, wireframes, etc)</p>', 3);
+('Test', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code> echo "hello world!"; </code>', 1),
+('Test2', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code> echo "hello world!"; </code>', 1),
+('Test', '<p>This section will emphasize the value of content for a website and to initiliaze it as a role.</p><img src="" alt="temporary picture">', 2),
+('Test2', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code> echo "hello world!"; </code>', 2),
+('Test', '<p>This section will walk through a quick Design process students can take (finding 5th elements, wireframes, etc)</p>', 3),
+('Test2', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code> echo "hello world!"; </code>', 3),
 ('Test', '<p>This section will have Database, PHP, HTML, JS and CSS advice.</p>', 4);
 
 

@@ -37,6 +37,11 @@ echo <<< HERE
                 </div>
             </div>
         </section>
+HERE;
+
+// Page: ABOUT 
+echo <<< HERE
+	<!-- LANDING -->
         <article class="about">
             <section class="landing"> </section>
             <section class="aboutText" style="background-color:#450084;">
@@ -47,30 +52,43 @@ echo <<< HERE
             </div>  
             </section>
 
+    <!-- ANON. NOTES SECTION -->
             <section class="contrast" style="background-color:#9C51E2;">
                 <div id="con">
                     $anonymousNotes
                 </div>
             </section>
 
+    <!-- ANON. REVIEW SECTION -->
             <section class="reviewMe" style="background-color:#CBB677;">
                 <div id="con" class="container">
                     <h2>$text[24]</h2>
                     <h4>$text[15]</h4>
-                    <form action="" method="post" id="myForm"> 
-                            <div class="row">    
+
+                   	<!-- FORM -->
+                    <form method="post" id="myForm"> 
+                            <div class="row">   
+
+                            <!-- CITY NAME INPUT -->  
                                 <div class="six columns">
                                     <div class="legend">$text[16]</div>
                                     <input type="text" name="cityName" id="cityName" class="form-control" placeholder="City" tabindex="1" minlength="2" required>
-                                </div>
+                                    </div>
+                                    <!-- END CITY NAME INPUT --> 
+
+                            <!-- COUNTRY NAME INPUT --> 
                                 <div class="six columns">
                                     <div class="legend">$text[17]</div>
                                         <select name="countryName" id="countryName" class="form-control" placeholder="Country" tabindex="2" required>'
                                             $countryOptions
                                         </select>
                                 </div>
+                            <!-- END COUNTRY NAME INPUT --> 
+
                             </div>
                             <div class="row">
+
+                            <!-- PRICE INPUT --> 
                                 <div class="six columns">
                                     <div class="legend">$text[18]</div>
                                         <select name="price" id="price" class="form-control" tabindex="3" required>
@@ -79,6 +97,9 @@ echo <<< HERE
                                              <option value="3">$text[35]</option>
                                         </select>
                                 </div>
+                            <!-- END PRICE INPUT --> 
+
+                            <!-- RATING INPUT --> 
                                 <div class="six columns">
                                     <div class="legend">$text[19]</div>
                                         <select name="rating" id="rating" class="form-control" tabindex="4" required>
@@ -87,23 +108,36 @@ echo <<< HERE
                                              <option value="1">&#9733;&#9734;&#9734;</option>
                                         </select>
                                 </div>
+                            <!-- END RATING INPUT --> 
+
                             </div>
-                            <!-- Write a Note -->
+
+                            <!-- NOTE TEXTAREA -->
                             <div class="row">
                                 <div class="12 columns"> 
                                     <div class="legend">$text[20]</div>
                                         <textarea name="note" id="note" class="form-control" rows="2" cols="70" placeholder="Tell us about your experience in 140 characters!" maxlength="140" tabindex="5"required></textarea>
                                         <div class="help">$text[31]</div>
                                 </div>
-                            </div>  
+                            <!-- END NOTE TEXTAREA --> 
+
+                            </div> 
+
+                            <!-- SUBMIT BUTTON -->  
                             <div class="row">
                                 <div class="twelve columns">
                                     <button class="req" type="submit" name="submit" tabindex="6">$submitText</button>
                                 </div>
                             </div>
-                    </form>  
+                            <!-- END SUBMIT BUTTON -->  
+
+                    </form> 
+                    <!-- END FORM -->  
             </section>
         </article>
+HERE;
+
+echo <<< HERE
         <section class="study">
             <aside>
             <div>
@@ -124,6 +158,8 @@ echo <<< HERE
                 </div>
             </aside>
         </section>
+
+        
 HERE;
 require 'footer.php'; ?>
         <!-- WARNING: Do not edit past this line -->

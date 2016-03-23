@@ -1,3 +1,5 @@
+--NOT USED
+
 CREATE PROCEDURE createReview (@countryAbbreviation CHAR(2), @cityName VARCHAR(25), @price int, @rating int, @note VARCHAR(140))
 AS 
 BEGIN 

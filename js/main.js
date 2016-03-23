@@ -46,29 +46,33 @@ $(function() {
 /* Hover Events                                                                                              */
 /*************************************************************************************************************/
      
-      $('.navAbout').on('mouseover', function() {
-        $('.navAbout').css({backgroundColor:'yellow'});
-      });
-      $('.navStudy').on('mouseover', function() {
-        $('.navStudy').css({backgroundColor:'yellow'});
-      });
-      $('.navAbroad').on('mouseover', function() {
-        $('.navAbroad').css({backgroundColor:'yellow'});
-      });
+      // $('header .navAbout').on('mouseover', function() {
+      //   $('header .navAbout').css({backgroundColor:'yellow'});
+      // });
+      // $('header .navStudy').on('mouseover', function() {
+      //   $('header .navStudy').css({backgroundColor:'yellow'});
+      // });
+      // $('header .navAbroad').on('mouseover', function() {
+      //   $('header .navAbroad').css({backgroundColor:'yellow'});
+      // });
+
+      // $('header a').on('mouseover', function() {
+      //   $('header .navAbroad').css({backgroundColor:'yellow'});
+      // });
 
 /*************************************************************************************************************/
 /* Mouse Out Events                                                                                          */
 /*************************************************************************************************************/
       
-      $('.navAbout').on('mouseout', function() {
-        $('.navAbout').css({backgroundColor:'white'});
-      });
-      $('.navStudy').on('mouseout', function() {
-        $('.navStudy').css({backgroundColor:'white'});
-      });
-      $('.navAbroad').on('mouseout', function() {
-        $('.navAbroad').css({backgroundColor:'white'});
-      });
+      // $('header .navAbout').on('mouseout', function() {
+      //   $('header .navAbout').css({backgroundColor:'white'});
+      // });
+      // $('header .navStudy').on('mouseout', function() {
+      //   $('header .navStudy').css({backgroundColor:'white'});
+      // });
+      // $('header .navAbroad').on('mouseout', function() {
+      //   $('header .navAbroad').css({backgroundColor:'white'});
+      // });
       
 /*************************************************************************************************************/
 /* Click Events                                                                                              */

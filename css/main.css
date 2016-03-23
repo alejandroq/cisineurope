@@ -67,6 +67,9 @@ p {
 a {
   text-decoration: none;
 }
+header .navBtn:hover {
+  background-color: yellow !important;
+}
 .contrast { color:white; }
 .credits {
   color:#575353;
@@ -260,7 +263,10 @@ section {
   margin:0em auto 0em auto;
   overflow:hidden;
 }
-
+.study aside img {
+  width:100%;
+  background-size:cover;
+}
 
 
 /* ==========================================================================
@@ -338,10 +344,11 @@ img {
 }
 
 code {
+  display: block;
+  word-wrap:break-word;
   padding: .2rem .5rem;
   margin: 0 .2rem;
   font-size: 90%;
-  white-space: nowrap;
   background: #F1F1F1;
   border: 1px solid #E1E1E1;
   border-radius: 4px; 

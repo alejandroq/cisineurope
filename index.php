@@ -80,7 +80,11 @@ echo <<< HERE
                                 <div class="six columns">
                                     <div class="legend">$text[17]</div>
                                         <select name="countryName" id="countryName" class="form-control" placeholder="Country" tabindex="2" required>'
-                                            $countryOptions
+HERE;
+
+                                            countryOptionsPrinting();
+
+echo <<< HERE
                                         </select>
                                 </div>
                             <!-- END COUNTRY NAME INPUT --> 
@@ -145,22 +149,24 @@ echo <<< HERE
                 <h4>$text[26]</h4>
                 <p>$text[27]</p>
             </div>
+HERE;
+
+			printStudyContent();
+
+echo '
             </aside>
                     <aside id="categories">
                 <div>
                     <h4>Categories</h4>
-                    <ul>
-                        <li>General</li>
-                        <li>Content</li>
-                        <li>Design</li>
-                        <li>Development<li>
-                    </ul>
+                    <ul>'; 
+                    
+						printStudyCategories();
+
+echo'               </ul>
                 </div>
             </aside>
-        </section>
+        </section>'; 
 
-        
-HERE;
 require 'footer.php'; ?>
         <!-- WARNING: Do not edit past this line -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -20,10 +20,9 @@ Designer / Developer: Alejandro Quesada
 		}
 
 	// global variables are calling functions to adhere results.
-	$countryOptions = countryOptionsPrinting();
-	$slideImgs = imgPrinting();
-	$text = primaryLanguage($currentLanguage);
-	$anonymousNotes = printAnonymousNotes($text);
+	$slideImgs = imgPrinting(); //print img's found on slideshow
+	$text = primaryLanguage($currentLanguage); //allocate language resources appropriately
+	$anonymousNotes = printAnonymousNotes($text); //print anon. notes
 	$submitText = formValidation($text);
 
 
@@ -99,51 +98,58 @@ Designer / Developer: Alejandro Quesada
         require 'connection.php';
 
 		// array initializations.
-		$inputs = ["cityName", "countryName", "price", "rating", "note"]; 
-		$review;
+		$inputs = ["countryName", "cityName", "price", "rating", "note"]; 
+		$review; $countryName; $cityName; $price; $rating; $note;
 
 		// loop counter initialization - for proper placemenet of array items to be posted to database
 		$i = 0;
 
 		foreach ($inputs as $val) {
 				
-					$answer = filter_input(INPUT_POST, $val, FILTER_SANITIZE_SPECIAL_CHARS);
-					
-					// array containing user inputs. SQL Queries derived below in 'foreach' loop
-					$review[$i] = $answer;
+			$answer = filter_input(INPUT_POST, $val, FILTER_SANITIZE_SPECIAL_CHARS);
+			
+			// array containing user inputs. SQL Queries derived below in 'foreach' loop
+			$review[$i] = $answer;
 
-					// loop increment
-					$i++;
-				}
+			// loop increment
+			$i++;
+		}
 
-		// SQL INSERTS for once values are allocated to $results[array]
-		$sql = "INSERT INTO location (city, country) VALUES ('$review[0]', '$review[1]')";
-			$rs = odbc_exec($connection,$sql);
+		$countryName = $review[0];
+		$cityName = $review[1];
+		$price = $review[2];
+		$rating = $review[3];
+		$note = $review[4];
 
-		$sql = "SELECT TOP 1 ID FROM location ORDER BY ID DESC";
-			$rs = odbc_exec($connection,$sql);
-			odbc_fetch_row($rs);
-			$locationID = odbc_result($rs,"ID");
+		$sql = "INSERT INTO reviews (countryAbbreviation, cityName, price, rating, note) VALUES ('" . $countryName . "', '" . $cityName . "', " . $price . ", " . $rating . ", '" . $note . "')"; 
 
-		$sql = "INSERT INTO reviews (locationID, price, rating, note) VALUES ('$locationID', '$review[2]', '$review[3]', '$review[4]')";
-			$rs = odbc_exec($connection,$sql);
-
-			}
+		// The below would utilization of a SQL Server Procedure would maintain data exclusivity for the city table. Could be tackled in a Trigger in the future given difficulty in working with Procedures in PHP ODBC. 
+		// SQL Execute Procedure to Create Review. Procedure prevents duplication of City/Country combination and inserts City's if New to Database
+		// $sql = "EXEC createReview ?, ?, ?, ?";
+		// $prep = odbc_prepare($connection,$sql);
+		// $inserts = array($countryName, $cityName, $price, $rating, $note);
+		// $rs = odbc_execute($prep, $inserts);
+	}
 
 
 # 
-#  Parsing a CSV into an Array containing Countries of the World 
+#  Retrieving Countries in Database and returning to HTML 
 #
 
 	function countryOptionsPrinting() {
-	
-		// csv parsed into an array from programs.csv
-		$csv = array_map('str_getcsv', file('csv/programs.csv'));
 
-		foreach ($csv as $val) {
-			$countryOptions .= '<option value=' . $val[0] .'>' . $val[0] . '</option>';
+		require 'connection.php';
+	
+		$sql = "SELECT * FROM country";
+		$rs = odbc_exec($connection,$sql);
+		odbc_fetch_row($rs);
+		$rows = odbc_num_rows($rs);
+
+		echo '<option value=' . odbc_result($rs,"abbreviation") .'>' . odbc_result($rs,"name") . '</option>';
+
+		while($myRow = odbc_fetch_array( $rs )){
+			echo '<option value=' . odbc_result($rs,"abbreviation") .'>' . odbc_result($rs,"name") . '</option>';
 		}
-		return $countryOptions;
 	}
 
 
@@ -182,15 +188,14 @@ Designer / Developer: Alejandro Quesada
 				}
 			}
 
-			$sql = "SELECT * FROM reviews JOIN location ON reviews.locationID = location.ID WHERE reviews.ID=$j";
+			$sql = "SELECT reviews.ID, reviews.price, reviews.rating, reviews.note, (country.name)countryName, cityName FROM reviews LEFT JOIN country ON reviews.countryAbbreviation=country.abbreviation WHERE reviews.ID=$j";
 				$rs = odbc_exec($connection,$sql);
 				odbc_fetch_row($rs);
-				$locationID = odbc_result($rs,"locationID");
 				$price = odbc_result($rs,"price");
 				$rating = odbc_result($rs,"rating");
 				$note = odbc_result($rs,"note");
-				$city = odbc_result($rs,"city");
-				$country = odbc_result($rs,"country");
+				$city = odbc_result($rs,"cityName");
+				$country = odbc_result($rs,"countryName");
 
 			// printing star rating 
 			switch ($rating) {
@@ -295,5 +300,96 @@ Designer / Developer: Alejandro Quesada
 		}
 
 		return $slideImgs;
+	}
+
+# 
+#  Get Wiki Categories from Database 
+#
+
+	function printFooterCategories() {
+	
+		require 'connection.php';
+
+		// find row count for a loop
+		$sql = "SELECT * FROM category";
+			$rs = odbc_exec($connection,$sql);
+			odbc_fetch_row($rs);
+			$rows = odbc_num_rows($rs);
+
+			echo '<li><a href="#' . odbc_result($rs,"name") . '" class="navStudy"><p>' . odbc_result($rs,"name") . '</p></a></li>';
+
+		while($myRow = odbc_fetch_array( $rs )){
+				echo '<li><a href="#' . odbc_result($rs,"name") . '" class="navStudy"><p>' . odbc_result($rs,"name") . '</p></a></li>';
+			}
+	}
+
+	function printNavCategories() {
+
+        require 'connection.php';
+
+		// find row count for a loop
+		$sql = "SELECT * FROM category";
+			$rs = odbc_exec($connection,$sql);
+			odbc_fetch_row($rs);
+			$rows = odbc_num_rows($rs);
+
+			echo '<a href="#' . odbc_result($rs,"name") . '"><div class="navBtn onMobile"><h3>' . odbc_result($rs,"name") . '</h3></div></a>';
+
+		while($myRow = odbc_fetch_array( $rs )){
+			echo '<a href="#' . odbc_result($rs,"name") . '"><div class="navBtn onMobile"><h3>' . odbc_result($rs,"name") . '</h3></div></a>';
+		}
+	}
+
+	function printStudyCategories() {
+
+        require 'connection.php';
+
+		// find row count for a loop
+		$sql = "SELECT * FROM category";
+			$rs = odbc_exec($connection,$sql);
+			odbc_fetch_row($rs);
+			$rows = odbc_num_rows($rs);
+
+			echo '<a href="#' . odbc_result($rs,"name") . '"><li>' . odbc_result($rs,"name") . '</li></a>';
+
+		while($myRow = odbc_fetch_array( $rs )){
+			echo '<a href="#' . odbc_result($rs,"name") . '"><li>' . odbc_result($rs,"name") . '</li></a>';
+		}
+	}
+
+
+# 
+#  Drawing img paths from Database 
+#
+
+	function printStudyContent() {
+		
+		require 'connection.php';
+
+		// select all content from wikiEntry
+		$sql="SELECT * FROM wikiEntry";
+		$rs = odbc_exec($connection, $sql);
+		odbc_fetch_row($rs);
+		$rows = odbc_num_rows($rs); //returns num of rows to loop
+
+		$prevCategoryName = ""; //initalize previous category check
+
+		for ($i=1; $i <= $rows; $i++) { 
+			
+			$sql="SELECT (name)categoryName, title, content FROM category LEFT JOIN wikiEntry ON category.ID=wikiEntry.categoryID WHERE wikiEntry.ID = $i";
+				$rs = odbc_exec($connection,$sql);
+				odbc_fetch_row($rs);
+
+			$categoryName = odbc_result($rs,"categoryName");
+
+			echo '<div>';
+
+			if ($categoryName != $prevCategoryName) {
+				echo '<a name="' . $categoryName . '"></a><h2>' . $categoryName . '</h2>';
+				$prevCategoryName = $categoryName;  
+			}
+
+			echo '<h4>' . odbc_result($rs,"title") . '</h4>' . odbc_result($rs,"content") . '</div>';
+		}
 	}
 ?> 

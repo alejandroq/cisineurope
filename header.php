@@ -52,12 +52,9 @@ echo <<<HERE
             <a href="index.php?english=true"><div class="navBtn navEnglish"><h3>$text[8]</h3></div></a>
             <a href="index.php?spanish=true"><div class="navBtn navSpanish"><h3>$text[9]</h3></div></a> 
             <div class="onMobile"><p>Study Categories</p></div>
-            <div class="navBtn onMobile"><h3>General</h3></div>
-            <div class="navBtn onMobile"><h3>Content</h3></div>
-            <div class="navBtn onMobile"><h3>Design</h3></div>
-            <div class="navBtn onMobile"><h3>Development</h3></div>
-        </nav>  
-        </header> 
 HERE;
-
+			printNavCategories();
+echo '
+        </nav>  
+        </header> ';
     ?>

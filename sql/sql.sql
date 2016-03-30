@@ -26,15 +26,22 @@ CREATE TABLE country(
 	name VARCHAR(30)
 );
 
+CREATE TABLE city(
+	city.ID int NOT NULL PRIMARY KEY,
+	city.name VARCHAR(25) NOT NULL,
+	countryAbbreviation CHAR(2) NOT NULL
+);
+
 CREATE TABLE reviews(
 	ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
 	countryAbbreviation CHAR(2) NOT NULL,
-	cityName VARCHAR(25) NULL,
+	cityID int NULL,
 	price int NOT NULL,
 	rating int NOT NULL,
 	note VARCHAR(140) NOT NULL,
 	post_date TIMESTAMP NOT NULL,
-	Constraint review_lccountry_FK foreign key (countryAbbreviation) References country (abbreviation)
+	Constraint review_lccountry_FK foreign key (countryAbbreviation) References country (abbreviation),
+	Constraint review_city_FK foreign key (cityID) References city (city.ID)
 	);
 
 CREATE TABLE img(

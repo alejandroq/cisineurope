@@ -41,7 +41,7 @@ CREATE TABLE reviews(
 	note VARCHAR(140) NOT NULL,
 	post_date TIMESTAMP NOT NULL,
 	Constraint review_lccountry_FK foreign key (countryAbbreviation) References country (abbreviation),
-	Constraint review_city_FK foreign key (cityID) References city (city.ID)
+	Constraint review_city_FK foreign key (cityID) References city (cityID)
 	);
 
 CREATE TABLE img(

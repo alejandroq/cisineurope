@@ -361,14 +361,28 @@ INSERT INTO reviews (countryAbbreviation, cityID, price, rating, note) VALUES
 INSERT INTO img (imgPath) VALUES 
 ('i1'), ('i2'), ('i3'), ('i4'), ('i5'), ('i6');
 
+
+--wikiEntry Modification
+ALTER TABLE wikiEntry
+ALTER COLUMN title VARCHAR(50) NULL;
+ALTER TABLE wikiEntry
+ALTER COLUMN content TEXT NULL;
+
 --WIKI
 INSERT INTO wikiEntry (title, content, categoryID) VALUES
-('Test', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code> echo "hello world!"; </code>', 1),
-('Test2', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code> echo "hello world!"; </code>', 1),
-('Test', '<p>This section will emphasize the value of content for a website and to initiliaze it as a role.</p><img src="" alt="temporary picture">', 2),
-('Test2', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code> echo "hello world!"; </code>', 2),
-('Test', '<p>This section will walk through a quick Design process students can take (finding 5th elements, wireframes, etc)</p>', 3),
-('Test2', '<p>This section will go through the macro-level project and assist students in role distribution.</p><code> echo "hello world!"; </code>', 3),
-('Test', '<p>This section will have Database, PHP, HTML, JS and CSS advice.</p>', 4);
-
+('File Paths', '<img src=“https://dl.dropboxusercontent.com/u/59744229/CIS%20Images/guide1.png”><p>This file distribution improves readability and modularizes components. My recommendation would be to <b>Replicate</b> this websites file structure. For example: \’header.php\’ is included in the primary file, \’index.php\’ as the navigation bar. More on this later..</p>', 1),
+('Roles', '<p>My recommendation would be to, at a minimum, maintain a <b>Content Developer</b>, a <b>Designer</b> and <b>Developer</b>. The Developer would handle back-end logic (PHP) and SQL, The Designer would handle wireframing and the HTML/CSS development. The Content Developer would develop content.</p>', 1),
+('Image Optimization', '<p>Images are the heaviest of downloads when viewing a website (especially on a mobile devices data plan). Optimize image file sizes here: <a href=“http://webresizer.com/resizer/“>Image Resizer</a>.</p>', 2),
+('Collaboration with Designer', '<p>Content is king of any website/application. Work with your designer for the best distribution and display of content (whether text, image, video, etc). The aforementioned heavily influences the flow of a website. The following graphic depicts how users scan a website (property of <a href=“https://www.smashingmagazine.com/2008/01/10-principles-of-effective-web-design/>Smashing Magazine.)</a></p>', 2),
+('Process', '<img src=“https://dl.dropboxusercontent.com/u/59744229/CIS%20Images/guide5.png”>Design is a process. Initially you discover requirements (speak to your client). Strategize your approach by creating personas. Personas are imaginary users that help provide context for certain design cues you will utilize. This step helps you design more empathetically. The final step in design is the development of wireframes given all of the information you have collected. Always check with your client! This is an iterative process.</p>', 3),
+('Collaboration', '<p>It is imperative as the designer that you collaborate with your Content Developers and Developers. The first for content and information architecture (discussed below). The second for feasibility. Can we code this in \’X\’ time?</p> ', 3),
+('Information Architecture', '<p>Usability is driven by ease of use. When an inexperienced user enters your application, they should find their way naturally. A proper IA is imperative for this (books have been written on the subject). This website\’s IA is pictured below:</p> <img src=“https://dl.dropboxusercontent.com/u/59744229/CIS%20Images/guide4.png”>', 3),
+('Wireframing', '<p>Plan your product through wireframing. The more you plan, the easier it will be to develop. Work on the wireframes with your team members and take into account your personas, information architecture and all information gathered to this point. Wireframes are not meant to be detailed and an example is below:</p><img src=“https://dl.dropboxusercontent.com/u/59744229/CIS%20Images/guide7.png”>', 3),
+('Mobile-First', '<p>Design your website to be responsive and prioritize functions based on what would work best on a mobile device. It is the new standard of development and helps your craft your digital product around it\’s true intention rather than gimmickry. This website was initially designed for the mobile platform. A wireframe is below:</p><img src=“https://dl.dropboxusercontent.com/u/59744229/CIS%20Images/guide6.png”>', 3),
+('PHP Basics', '<code>All PHP Code begins like this <?php echo \’Hello World!\’; ?></code> ', 4),
+('Database ERD', '<p>The ERD below is the back-end foundation of this website.</p><img src=“https://dl.dropboxusercontent.com/u/59744229/CIS%20Images/guide3.png”>', 4),
+('Client-Size vs Back-End', '<p>PHP interacts with your Database each Server reload (form action when a submission of GET or POST instance occurs). Javascript, in contrast, works client-side. It runs code live and enables neat animations and interactions with a website. The majority of the animations on this website are accomplished through a Javascript Library by the name of jQuery.</p>', 4),
+('Javascript vs jQuery', '<p>More of this can be found in the main.js file.</p><code>//Javascript object <br>var foo = document.getElementByClassName(“bar”);<br>//The Same Object in jQuery<br>var foo = $(".bar");</code><p>jQuery selectors are the same as CSS selectors. More information can be found on <a href=“http://www.w3schools.com/jquery/”>W3!</a></p>', 4),
+('Responsive Web Design', '<p>My two personal recommendations on successful Responsive Web Design: 1) Beware the percent. Meant for fluid design. 2) Use ems instead. They are fantastic. External CSS code required to render exclusive screen size CSS attributes:</p><code> @media screen and (max-width: 629px) { /* Attributes for screens with a maximum size of 629px. Used for mobile responsiveness in this website. */ }<p>This will be difficult at first, but is extremely valuable. Work with your Designer to maintain feasibility.', 4),
+('Code', '<p>We highly encourage you to look through this websites code files. We have gone out of our way to properly comment and modularize code to best enable readability! Primary files include: index.php, header.php, footer.php, main.css, main.js and functions.php. Neat features include: Twitter Character Count, numerous database queries of differing styles and complexity, etc.</p>', 4);
 

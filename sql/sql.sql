@@ -359,7 +359,11 @@ INSERT INTO reviews (countryAbbreviation, cityID, price, rating, note) VALUES
 ('SE', 1, 3, 3,	'Stockholm, Sweden is full of enough brilliant architecture and pretty people to supplement "purposeful lostfullness" for 5+ hours.');
 
 INSERT INTO img (imgPath) VALUES 
-('i1'), ('i2'), ('i3'), ('i4'), ('i5'), ('i6');
+('i1'), ('i2'), ('i3'), ('i4'), ('i5'), ('i6'), ('i7'), ('i8'), ('i9'), ('i10'), ('i11'), 
+('i12'), ('i13'), ('i14'), ('i15'), ('i16'), ('i17'), ('i18'), ('i19'), ('i20'), ('i21'), 
+('i22'), ('i23'), ('i24'), ('i25'), ('i26'), ('i27'), ('i28'), ('i29'), ('i30'), ('i31'), 
+('i32'), ('i33'), ('i34');
+
 
 
 -- DELETE FROM wikiEntry;

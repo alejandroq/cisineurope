@@ -355,7 +355,7 @@ INSERT INTO country VALUES ('ZW', 'Zimbabwe');
 --INITIAL CONTENT
 INSERT INTO city (cityName, countryAbbreviation) VALUES ('Stockholm', 'SE');
 
-INSERT INTO reviews (countryAbbreviation, cityName, price, rating, note) VALUES
+INSERT INTO reviews (countryAbbreviation, cityID, price, rating, note) VALUES
 ('SE', 1, 3, 3,	'Stockholm, Sweden is full of enough brilliant architecture and pretty people to supplement "purposeful lostfullness" for 5+ hours.');
 
 INSERT INTO img (imgPath) VALUES 

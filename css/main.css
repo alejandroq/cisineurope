@@ -89,6 +89,13 @@ header .navBtn:hover {
   margin-top:15px;
   text-decoration: none;
 }
+.study div:nth-child(even) {
+  background-color:#CBB677 ;
+  border-radius:.3em;
+}
+.study div {
+  margin-left:1em
+}
 #logo {
   float:left;
   overflow:hidden
@@ -125,19 +132,21 @@ form {
 :-ms-input-placeholder {  
    color: #CBB677;  
 }
-.form-control{
+.form-control {
     height: 40px;
     background-color: transparent;
     border: 1px solid #f0f0f0;
     border-radius: 0; 
-    margin:-25px auto 0 auto;
     -webkit-transition: all 0.2s ease-in-out 0s;
     -moz-transition: all 0.2s ease-in-out 0s;
     -ms-transition: all 0.2s ease-in-out 0s;
     -o-transition: all 0.2s ease-in-out 0s;
     transition: all 0.2s ease-in-out 0s;
 }
-.form-control:focus {
+#myForm .form-control {
+  margin:-25px auto 0 auto;
+}
+.reviewme .form-control:focus {
   border-color: #450084;
   background-color: #fafafa; 
 }
@@ -186,6 +195,7 @@ button {
   transition: all 0.2s ease-in-out 0s;
 }
 
+
 form button {
   background-color:#CBB677;
   border-color:black;
@@ -193,6 +203,17 @@ form button {
 }
 
 form button:hover, form button:focus {
+  background-color: #450084;
+  color:white;
+}
+
+.contrast button {
+  background-color:#9C51E2;
+  border-color:white;
+  color:white;
+}
+
+.contrast button:hover, .contrast button:focus {
   background-color: #450084;
   color:white;
 }
@@ -241,13 +262,11 @@ section {
 
 .study aside {
   float:left;
-  margin-left:1em;
   width:70%;
 }
 #categories {
   right:1em;
   width:20%;
-  max-width: 12em;
   color:white;
   min-width:9em;
   position:fixed;
@@ -332,7 +351,9 @@ li {
 @media (min-width: 400px) {
   .container {
     width: 85%;
-    padding: 0; }
+    padding: 0;
+    margin-bottom: 3em;
+     }
 }
 
 
@@ -364,7 +385,7 @@ pre > code {
 /* ==========================================================================
    7.0 - Mobile
    ========================================================================== */
-   @media screen and (max-width: 629px) {
+   @media screen and (max-width: 630px) {
 
     /* Hidden */
     nav, .study, .abroad, #langSelect, .study #categories { display:none; }
@@ -378,9 +399,11 @@ pre > code {
         min-height:3.5em
       }
     form {
+      height: 240px;
+    }
+    #myForm {
       height:575px; /* An impartial solution to fixing Mobile Form Section* -AQ */
     }
-
     /* Navigation */
     #stackMenu {
       float:left;
@@ -398,6 +421,8 @@ pre > code {
       width:100%;
       background-color:white;
       position:absolute;
+      border-bottom-style: solid;
+      box-shadow: gray .1em .2em 5px;
       top:93px;
       left:0px;
       text-align:left;
@@ -422,6 +447,12 @@ pre > code {
     }
     .study aside {
       width: 100%;
+      margin-left: 2em;
+    }
+    @media (max-width:630px){
+      .study aside {
+        margin-left: 0;
+      }
     }
     /*************************************************************************************************************/
     /* Carousel: Source:     http://g-liu.com/blog/2013/08/tutorial-basic-carouselslideshow-with-javascript/     */

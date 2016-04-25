@@ -20,10 +20,11 @@ Designer / Developer: Alejandro Quesada
 		}
 
 	// global variables are calling functions to adhere results.
-	$slideImgs = imgPrinting(); //print img's found on slideshow. Database Query occurs.
+	$slideImgs = imgPrinting(); //print img's found on slideshow
 	$text = primaryLanguage($currentLanguage); //allocate language resources appropriately
 	$anonymousNotes = printAnonymousNotes($text); //print anon. notes
 	$submitText = formValidation($text);
+	$visitedCountries = printVisitedCountries();
 
 
 # 
@@ -81,6 +82,7 @@ Designer / Developer: Alejandro Quesada
 
 				// formPost() function is called WHEN form is validated
 				formPost();
+
 				return $text[23];
 				} else {
 						// default text of 'Submit Button'
@@ -121,14 +123,25 @@ Designer / Developer: Alejandro Quesada
 		$rating = $review[3];
 		$note = $review[4];
 
-		$sql = "INSERT INTO reviews (countryAbbreviation, cityName, price, rating, note) VALUES ('" . $countryName . "', '" . $cityName . "', " . $price . ", " . $rating . ", '" . $note . "')"; 
+		$sql = "SELECT CASE WHEN EXISTS (SELECT * FROM country INNER JOIN city ON abbreviation = '" . $countryName . "' WHERE cityName = '" . $cityName . "') THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END";
+			$rs = odbc_exec($connection,$sql);
+			odbc_fetch_row($rs);
+			$temp = odbc_result($rs,odbc_field_name($rs,1));
 
-		// The below would utilization of a SQL Server Procedure would maintain data exclusivity for the city table. Could be tackled in a Trigger in the future given difficulty in working with Procedures in PHP ODBC. 
-		// SQL Execute Procedure to Create Review. Procedure prevents duplication of City/Country combination and inserts City's if New to Database
-		// $sql = "EXEC createReview ?, ?, ?, ?";
-		// $prep = odbc_prepare($connection,$sql);
-		// $inserts = array($countryName, $cityName, $price, $rating, $note);
-		// $rs = odbc_execute($prep, $inserts);
+		if ($temp == 0){
+			$sql = "INSERT INTO city (cityName, countryAbbreviation) VALUES ('" . $cityName . "', '" . $countryName . "')";
+			$rs = odbc_exec($connection,$sql);
+		} 
+
+		$sql = "SELECT cityID FROM city WHERE cityName = '" . $cityName . "' AND countryAbbreviation =  '" . $countryName . "'"; 
+			$rs = odbc_exec($connection,$sql);			
+			odbc_fetch_row($rs);
+			$cityID = odbc_result($rs,"cityID");
+
+
+		$sql = "INSERT INTO reviews (countryAbbreviation, cityID, price, rating, note) VALUES ('" . $countryName . "', '" . $cityID . "', " . $price . ", " . $rating . ", '" . $note . "')"; 
+			$rs = odbc_exec($connection,$sql);
+
 	}
 
 
@@ -162,69 +175,59 @@ Designer / Developer: Alejandro Quesada
 		require 'connection.php';
 
 		// variable initialization 
-		$content = '<h2> ' . $text[13] . ' </h2>';
-		$j; //a soon to be randomized integer 
+		$content; $filter = ""; 
+		$sort = ($_POST['sort'] == 'Old') ? "ORDER BY post_date ASC" : "ORDER BY post_date DESC";
 
-		// array to avoid repeat random integers below
-		$random = [0, 0, 0];
-
-		// find row count for min & max of random function
-		$sql = "SELECT * FROM reviews";
-			$rs = odbc_exec($connection,$sql);
-			odbc_fetch_row($rs);
-			$rows = odbc_num_rows($rs);
-
-		for ($i; $i <= 2; $i++) {
-
-			/*  each number in $random is compared to $j to find similarity. 
-				if the same, the $j will be re-randomized. NOTE: $j and random[0] 
-				are initially equal. */
-			foreach($random as $val) {
-				if ($j != $val) {
-					$random[$i] = $j; // eliciting values upon their relays 
-				} else {
-					$j = rand(1,($rows)); // random number generation
-					$random[$i] = $j; 
-				}
-			}
-
-			$sql = "SELECT reviews.ID, reviews.price, reviews.rating, reviews.note, (country.name)countryName, cityName FROM reviews LEFT JOIN country ON reviews.countryAbbreviation=country.abbreviation WHERE reviews.ID=$j";
-				$rs = odbc_exec($connection,$sql);
-				odbc_fetch_row($rs);
-				$price = odbc_result($rs,"price");
-				$rating = odbc_result($rs,"rating");
-				$note = odbc_result($rs,"note");
-				$city = odbc_result($rs,"cityName");
-				$country = odbc_result($rs,"countryName");
-
-			// printing star rating 
-			switch ($rating) {
-				case 3:
-					$rating = "&#9733;&#9733;&#9733;"; break;
-				case 2:
-					$rating = "&#9733;&#9733;&#9734;"; break;
+		if (isset($_POST['filter'])){
+			$filter = $_POST['filter'];
+			switch ($filter) {
+				case 'default':
+					break;
+				
 				default:
-					$rating = "&#9733;&#9734;&#9734;"; break;
+					$cityID = intval(substr($filter, 2));
+					$countryAbbreviation = substr($filter, 0, 2);
+					$temp = "WHERE reviews.cityID = " . $cityID ." AND reviews.countryAbbreviation = '" . $countryAbbreviation . "'"; 
+					break;
 			}
-
-			$price = getCurrencySymbol($price, $country);
-
-			// content validation for the purpose of maintaing only the inclusiosn of functioning 
-			// DB pulls (when ASCII characters are not involved). A Database Alteration of UTF8 
-			// character sets may be required. -AQ
-			if ($note != "") {
-				$content .= '<div style="margin-top:3em;> <h4 style="text-align:center"><i>' . $note . '</i></h4></div> 
-							<div style="margin-bottom:3em;"><p style="text-align:center; line-height:.5em;">' 
-							. $rating . '  ' 
-							. $price . ' ' 
-							. $city . ', ' . $country . '</p></div>';
-			} 	
 		}
 
-		$content .= '<h4> ' . $text[14] . ' </h4>'; 
+		$sql = "SELECT TOP 3 reviews.ID, reviews.price, reviews.rating, reviews.countryAbbreviation, reviews.note, (country.name)countryName, reviews.cityID, city.cityName FROM reviews INNER JOIN country ON reviews.countryAbbreviation=country.abbreviation INNER JOIN city ON reviews.cityID = city.cityID " . $temp . " " . $sort;
+			$rs = odbc_exec($connection,$sql);
 
-		return $content;
+
+		while(odbc_fetch_row($rs)) {
+			$price = odbc_result($rs,"price");
+			$rating = odbc_result($rs,"rating");
+			$note = odbc_result($rs,"note");
+			$city = odbc_result($rs,"cityName");
+			$country = odbc_result($rs,"countryName");
+
+		// printing star rating 
+		switch ($rating) {
+			case 3:
+				$rating = "&#9733;&#9733;&#9733;"; break;
+			case 2:
+				$rating = "&#9733;&#9733;&#9734;"; break;
+			default:
+				$rating = "&#9733;&#9734;&#9734;"; break;
+		}
+
+		$price = getCurrencySymbol($price, $country);
+
+		// content validation for the purpose of maintaing only the inclusiosn of functioning 
+		// DB pulls (when ASCII characters are not involved). A Database Alteration of UTF8 
+		// character sets may be required. -AQ
+		if ($note != "") {
+			$content .= '<div style="margin-top:3em;> <h4 style="text-align:center"><i>' . $note . '</i></h4></div> 
+						<div style="margin-bottom:3em;"><p style="text-align:center; line-height:.5em;">' 
+						. $rating . '  ' 
+						. $price . ' ' 
+						. $city . ', ' . $country . '</p></div>';
+		} 	
 	}
+		return $content;
+}
 
 
 # 
@@ -298,7 +301,6 @@ Designer / Developer: Alejandro Quesada
 					break;
 			}
 		}
-
 		return $slideImgs;
 	}
 
@@ -330,13 +332,13 @@ Designer / Developer: Alejandro Quesada
 		// find row count for a loop
 		$sql = "SELECT * FROM category";
 			$rs = odbc_exec($connection,$sql);
-			odbc_fetch_row($rs);
+			// odbc_fetch_row($rs);
 			$rows = odbc_num_rows($rs);
 
-			echo '<a href="#' . odbc_result($rs,"name") . '"><div class="navBtn onMobile"><h3>' . odbc_result($rs,"name") . '</h3></div></a>';
+			// echo '<a href="#' . odbc_result($rs,"name") . '"><div class="navBtn onMobile navStudy"><h3>' . odbc_result($rs,"name") . '</h3></div></a>';
 
 		while($myRow = odbc_fetch_array( $rs )){
-			echo '<a href="#' . odbc_result($rs,"name") . '"><div class="navBtn onMobile"><h3>' . odbc_result($rs,"name") . '</h3></div></a>';
+			echo '<a href="#' . odbc_result($rs,"name") . '"><div class="navBtn onMobile navStudy"><h3>' . odbc_result($rs,"name") . '</h3></div></a>';
 		}
 	}
 
@@ -391,5 +393,33 @@ Designer / Developer: Alejandro Quesada
 
 			echo '<h4>' . odbc_result($rs,"title") . '</h4>' . odbc_result($rs,"content") . '</div>';
 		}
+	}
+
+# 
+#  Drawing img paths from Database 
+#
+	function printVisitedCountries() {
+
+		require 'connection.php';
+
+		$content = "";
+	
+		$sql = "SELECT * FROM city LEFT JOIN country ON countryAbbreviation = abbreviation;";
+		$rs = odbc_exec($connection,$sql);
+
+		// $rows = odbc_num_rows($rs);
+
+		while(odbc_fetch_row($rs)){
+			$cityID = odbc_result($rs,"cityID");
+			$countryAbbreviation = odbc_result($rs,"abbreviation");
+			$cityName = odbc_result($rs,"cityName");
+			$countryName = odbc_result($rs,"name");
+
+			$value = $countryAbbreviation . $cityID;
+			$display = ucfirst($cityName) . ", " . ucfirst($countryName);
+			$content .= '<option value=' . $value .'>' . $display . '</option>';
+		}
+
+		return $content;
 	}
 ?> 

@@ -28,7 +28,7 @@
 
 echo <<<HERE
         <header>
-		<a name="top"></a>
+        <a name="top"></a>
         <div id="stackMenu"></div>
         <div id="logo">
             <h1>$text[1]</h1>
@@ -53,7 +53,7 @@ echo <<<HERE
             <a href="index.php?spanish=true"><div class="navBtn navSpanish"><h3>$text[9]</h3></div></a> 
             <div class="onMobile"><p>Study Categories</p></div>
 HERE;
-			printNavCategories();
+            printNavCategories();
 echo '
         </nav>  
         </header> ';

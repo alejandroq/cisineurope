@@ -1,7 +1,7 @@
 /* 
 
 CIS in Europe MVP 
-JS / JQuery Deliverable
+11/20/15 JS / JQuery Deliverable
 
 Designer / Developer: Alejandro Quesada
 
@@ -40,6 +40,39 @@ $(function() {
         $('.navSpanish').css({color:'#323232'}); 
 
     }
+
+
+/*************************************************************************************************************/
+/* Hover Events                                                                                              */
+/*************************************************************************************************************/
+     
+      // $('header .navAbout').on('mouseover', function() {
+      //   $('header .navAbout').css({backgroundColor:'yellow'});
+      // });
+      // $('header .navStudy').on('mouseover', function() {
+      //   $('header .navStudy').css({backgroundColor:'yellow'});
+      // });
+      // $('header .navAbroad').on('mouseover', function() {
+      //   $('header .navAbroad').css({backgroundColor:'yellow'});
+      // });
+
+      // $('header a').on('mouseover', function() {
+      //   $('header .navAbroad').css({backgroundColor:'yellow'});
+      // });
+
+/*************************************************************************************************************/
+/* Mouse Out Events                                                                                          */
+/*************************************************************************************************************/
+      
+      // $('header .navAbout').on('mouseout', function() {
+      //   $('header .navAbout').css({backgroundColor:'white'});
+      // });
+      // $('header .navStudy').on('mouseout', function() {
+      //   $('header .navStudy').css({backgroundColor:'white'});
+      // });
+      // $('header .navAbroad').on('mouseout', function() {
+      //   $('header .navAbroad').css({backgroundColor:'white'});
+      // });
       
 /*************************************************************************************************************/
 /* Click Events                                                                                              */

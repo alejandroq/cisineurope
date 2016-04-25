@@ -1,7 +1,7 @@
 <!-- 
 
 CIS in Europe MVP 
-HTML Deliverable
+11/20/15 HTML Deliverable
 
 Designer / Developer: Alejandro Quesada
 
@@ -41,23 +41,50 @@ HERE;
 
 // Page: ABOUT 
 echo <<< HERE
-	<!-- LANDING -->
+
+    <!-- LANDING -->
         <article class="about">
             <section class="landing"> </section>
             <section class="aboutText" style="background-color:#450084;">
             <div id="con" class="contrast">
                 <h2>$text[10]</h2>
                 <h4>$text[11]</h4>
-                <p>$text[12]</p>
+                <p>Congratulations on your acceptance into James Madison University\’s CIS in Europe program! Utilize this guide as an assisting hand for your final project and more importantly, in the sharing and selection of exciting abroad experiences! This guide is the result of former program students efforts and experiences. -AQ</p> 
             </div>  
             </section>
 
     <!-- ANON. NOTES SECTION -->
             <section class="contrast" style="background-color:#9C51E2;">
                 <div id="con">
+                <h2>$text[13]</h2>              
                     $anonymousNotes
+                <!-- ANON. REVIEW FILTER CONTROLS -->
+                <form method="post" id="filterForm" class="container"> <!-- Skeleton Framework Grid applied here -->
+                <hr>
+                  <div class="row">
+                      <div class="offset-by-three six columns">
+                      <div class="legend"<p>Check out our Filter Options below!</p></div>
+                        <select name="filter" class="form-control">
+                            <option value="default">--City and Country Filter--</option>
+HERE;
+                        echo $visitedCountries;
+echo <<< HERE
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="offset-by-two four columns">
+                        <button type="submit" name="sort" value="Old">View Oldest</button>
+                      </div>
+                      <div class="four columns">
+                        <button type="submit" name="sort" value="New">View Newest</button>
+                      </div>
+                    </div>
+                </form> <!-- END Framework Application -->
+                <!-- END ANON. REVIEW FILTER CONTROLS -->      
                 </div>
             </section>
+    <!-- END ANON. NOTES SECTION -->
 
     <!-- ANON. REVIEW SECTION -->
             <section class="reviewMe" style="background-color:#CBB677;">
@@ -65,7 +92,7 @@ echo <<< HERE
                     <h2>$text[24]</h2>
                     <h4>$text[15]</h4>
 
-                   	<!-- FORM -->
+                    <!-- FORM -->
                     <form method="post" id="myForm"> 
                             <div class="row">   
 
@@ -147,22 +174,22 @@ echo <<< HERE
             <div>
                 <h2>$text[25]</h2>
                 <h4>$text[26]</h4>
-                <p>$text[27]</p>
+                <p>The purpose of this documentation is to help you best develop your final project. Your final project being the integration of a website and a database. This wiki is broken into categories to best guide you!</p>
             </div>
 HERE;
 
-			printStudyContent();
+            printStudyContent();
 
 echo '
             </aside>
-                    <aside id="categories">
+            <aside id="categories">
                 <div>
                     <h4>Categories</h4>
                     <ul>'; 
                     
-						printStudyCategories();
+                        printStudyCategories();
 
-echo'               </ul>
+echo '              </ul>
                 </div>
             </aside>
         </section>'; 

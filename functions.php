@@ -20,7 +20,7 @@ Designer / Developer: Alejandro Quesada
 		}
 
 	// global variables are calling functions to adhere results.
-	$slideImgs = imgPrinting(); //print img's found on slideshow
+	$slideImgs = imgPrinting(); //print img's found on slideshow. Database Query occurs.
 	$text = primaryLanguage($currentLanguage); //allocate language resources appropriately
 	$anonymousNotes = printAnonymousNotes($text); //print anon. notes
 	$submitText = formValidation($text);

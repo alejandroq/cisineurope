@@ -1,7 +1,7 @@
 <!-- 
 
 CIS in Europe MVP 
-11/20/15 HTML Deliverable
+HTML Deliverable
 
 Designer / Developer: Alejandro Quesada
 

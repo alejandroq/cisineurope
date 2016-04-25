@@ -362,16 +362,16 @@ INSERT INTO img (imgPath) VALUES
 ('i1'), ('i2'), ('i3'), ('i4'), ('i5'), ('i6');
 
 
---DELETE FROM wikiEntry;
+-- DELETE FROM wikiEntry;
 
 --wikiEntry Modification
- ALTER TABLE wikiEntry
- ALTER COLUMN title VARCHAR(50) NULL;
- ALTER TABLE wikiEntry
- ALTER COLUMN content TEXT NULL;
+ALTER TABLE wikiEntry
+ALTER COLUMN title VARCHAR(50) NULL;
+ALTER TABLE wikiEntry
+ALTER COLUMN content TEXT NULL;
 
 --wikiEntry Reseed
---DBCC CHECKIDENT (wikiEntry, RESEED, 0)
+-- DBCC CHECKIDENT (wikiEntry, RESEED, 0)
 
 --WIKI
 INSERT INTO wikiEntry (title, content, categoryID) VALUES

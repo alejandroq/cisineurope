@@ -27,7 +27,7 @@ CREATE TABLE country(
 );
 
 CREATE TABLE city(
-	cityID int NOT NULL PRIMARY KEY,
+	cityID int NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	cityName VARCHAR(25) NOT NULL,
 	countryAbbreviation CHAR(2) NOT NULL
 );
